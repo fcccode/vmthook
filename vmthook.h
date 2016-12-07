@@ -16,9 +16,9 @@ class VMTHook {
 		VMTHook(void) = default;
 
 		VMTHook(void* baseclass) {
-			this->baseclass = reinterpret_cast<std::uintptr_t**>(baseclass);
+			this->baseclass = static_cast<std::uintptr_t**>(baseclass);
 
-			while (reinterpret_cast<std::uintptr_t*>(*this->baseclass)[this->total_functions])
+			while (static_cast<std::uintptr_t*>(*this->baseclass)[this->total_functions])
 				++this->total_functions;
 
 			const std::size_t table_size = this->total_functions * sizeof(std::uintptr_t);
