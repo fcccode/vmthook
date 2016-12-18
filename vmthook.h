@@ -1,5 +1,4 @@
-#ifndef VMTHOOK_H_
-#define VMTHOOK_H_
+#pragma once
 
 #include <cstdint>
 #include <cstddef>
@@ -39,7 +38,7 @@ class VMTHook {
 			return reinterpret_cast<Function>(this->original_vft[function_index]);
 		}
 
-		inline const bool HookFunction(void* new_function, const std::size_t function_index) {
+		inline bool HookFunction(void* new_function, const std::size_t function_index) {
 			if (function_index > this->total_functions)
 				return false;
 
@@ -48,7 +47,7 @@ class VMTHook {
 			return true;
 		}
 
-		inline const bool UnhookFunction(const std::size_t function_index) {
+		inline bool UnhookFunction(const std::size_t function_index) {
 			if (function_index > this->total_functions)
 				return false;
 
@@ -57,9 +56,7 @@ class VMTHook {
 			return true;
 		}
 
-		inline const std::size_t GetTotalFunctions() {
+		inline std::size_t GetTotalFunctions() {
 			return this->total_functions;
 		}
 };
-
-#endif
