@@ -8,7 +8,7 @@
 class VMTHook {
 	private:
 		std::uintptr_t** baseclass = nullptr;
-		std::unique_ptr<uintptr_t[]> current_vft = nullptr;
+		std::unique_ptr<std::uintptr_t[]> current_vft = nullptr;
 		std::uintptr_t* original_vft = nullptr;
 		std::size_t total_functions = 0;
 	public:
