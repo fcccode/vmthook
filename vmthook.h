@@ -17,6 +17,7 @@
 	along with VMTHook. If not, see <http://www.gnu.org/licenses/>.
 
 */
+
 #pragma once
 
 #include <cstdint>
@@ -53,8 +54,8 @@ class VMTHook {
 			*this->baseclass = this->original_vft;
 		};
 
-		template <typename Function> inline const Function GetOriginalFunction(std::size_t function_index) {
-			return reinterpret_cast<Function>(this->original_vft[function_index]);
+		template <typename Fn = void*> inline const Fn GetOriginalFunction(std::size_t function_index) {
+			return reinterpret_cast<Fn>(this->original_vft[function_index]);
 		}
 
 		inline bool HookFunction(void* new_function, const std::size_t function_index) {
